@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, request
+from flask import Flask, redirect, url_for, request, render_template
 app = Flask(__name__)
 
 @app.route('/')
@@ -39,11 +39,7 @@ def invalid_user(username=None):
 
 @app.route('/invalid_password')
 def invalid_password():
-    return """
-    <h1>INVALID PASSWORD!!!</h1>
-    <hr>
-    <p><a href="/">Go to HOME</a></p>
-    """
+    return render_template("invalid_password.html")
 
 @app.route('/login', methods = ['POST'])
 def on_login():
